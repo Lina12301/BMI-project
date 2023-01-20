@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Kalkulator BMI</title>
+    <script src="Wyniki.js"></script>
+</head>
+
+<body>
+<header>
+    <h1> Kalkulator BMI</h1>
+</header>
+<div class="layout">
+    <div class="input">
+        <ul><label>Wpisz wzrost:</label>
+            <input type="text"  id="height">
+            <label>Wpisz wagę:</label>
+            <input type="text"  id="weight">
+            <button>Zatwiedź</button>
+        </ul>
+
+    </div>
+    <div class="data">
+        <ul>
+            <label>
+                Waga:
+                <p id="weight-data"></p>
+            </label>
+            <label>
+                Wzrost:
+                <p id="height-data"></p>
+            </label>
+            <label>
+                BMI:
+                <p id="bmi-data"></p>
+            </label>
+            <p id="alert"></p>
+
+        </ul>
+    </div>
+    <div class="result">
+
+        <label>
+            Wyniki:
+        </label>
+        <ul></ul>
+        <p id="avg"></p>
+    </div>
+</div>
+<script src="Wyniki.js"></script>
+<script src="./script.js">
+</script>
+
+
+</body>
+
+</html>
