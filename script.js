@@ -3,6 +3,19 @@ const btn = document.querySelector('button');
 const list = document.querySelector('.result ul');
 
 
+// const date1 = ()=> {
+//     const now = new Date();
+// return{
+//     infoff: `Pomiar odnotowany dnia:${now.getDate()}.${now.getMonth()+1}.${now.getFullYear()}
+//     o godzinie: ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+//         // console.log(text);
+// }}
+const clean = () => {
+    const input_H = document.getElementById("height");
+    const input_W = document.getElementById("weight");
+    input_H.value = '';
+    input_W.value = '';
+}
 const chooseResult = (event) => {
     const id = Number(event.target.dataset.id);
     document.getElementById("weight-data").innerHTML = results.getResult(id).waga;
@@ -11,18 +24,26 @@ const chooseResult = (event) => {
     document.getElementById("alert").innerHTML = "";
 
 };
+const showAvg=()=>{
+    if (isNaN(results.avg())){
+        document.getElementById("avg").innerText ='';
+    }else {
+        document.getElementById("avg").innerText = "Średnia wyników: " + results.avg().toFixed(2);
+    }
+}
 const makeList = () => {
     list.innerText = '';
     for (const res of results.show()) {
         const {id, text} = res;
         const newList = document.createElement('li');
+        //const date = document.createElement('li');
         newList.innerHTML = res.text;
         newList.addEventListener('click', chooseResult);
         newList.dataset.id = res.id;
         list.appendChild(newList);
     }
-    document.getElementById("avg").innerText = "Średnia wyników: " + results.avg().toFixed(2);
-
+    //document.getElementById("avg").innerText = "Średnia wyników: " + results.avg().toFixed(2);
+showAvg();
 };
 const info = () => {
     const inf = results.compare();
@@ -53,41 +74,10 @@ const bmi = () => {
         document.getElementById("bmi-data").innerHTML = result.bmi;
         results.add(result);
     }
-
     makeList();
     info();
-
+    clean();
 };
 
 btn.addEventListener('click', bmi);
-// function wypisz(bmi,waga,wzrost){
-//      if (isNaN(waga)|| isNaN(wzrost)){
-//          console.log("kutas");
-//      }
-//      else if(waga <40 || waga >200 ){
-//          document.getElementById("alert").innerHTML = "Niepoprawna waga";
-//      }
-//          else if (wzrost <120 || wzrost > 240){
-//          document.getElementById("alert").innerHTML = "Niepoprawny wzrost";
-//      }
-//      else {
-//     document.getElementById("bmi-data").innerHTML = bmi.toFixed(2);
-//     document.getElementById("weight-data").innerHTML = waga;
-//     document.getElementById("height-data").innerHTML = wzrost;
-//
-// }}
-// function obliczbmi() {
-//     var waga = Number(document.getElementById("weight").value);
-//     var wzrost = Number(document.getElementById("height").value);
-//     var bmi = waga / ((wzrost * wzrost) / 10000);
-//    wypisz(bmi,waga,wzrost);
-//     var wynikk = new Wynik(waga,wzrost,bmi);
-//
-//
-// }
-
-
-
-
-
-
+makeList();
