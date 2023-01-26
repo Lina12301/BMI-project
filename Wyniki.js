@@ -3,11 +3,19 @@
 class Wyniki {
 
     constructor() {
-        this.wyniki = [];
+        const load1 = this.load();
+        if(load1){
+          this.wyniki = load1;
+        }else {
+            this.wyniki = [];
+        }
+
+
     }
 
     add(wynik) {
         this.wyniki.push(wynik);
+        this.save();
     }
 
     avg() {
@@ -19,12 +27,15 @@ class Wyniki {
     }
 
     show() {
+        const now = new Date();
         return this.wyniki
             .map((wynik, i) => {
                 return {
 
                     id: i + 1,
-                    text: `${i + 1}) Waga: ${wynik.waga} Wzrost: ${wynik.wzrost}  BMI: ${wynik.bmi.toFixed(2)}`
+                    text: `${i + 1}) Waga: ${wynik.waga} Wzrost: ${wynik.wzrost}  BMI: ${wynik.bmi.toFixed(2)}
+                    Pomiar odnotowany dnia: ${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}r.
+     o godzinie: ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
                 };
             });
 
@@ -45,6 +56,12 @@ class Wyniki {
 
     getResult(i) {
         return this.wyniki[i - 1];
+    }
+    save (){
+        localStorage.setItem('wynik', JSON.stringify(this.wyniki));
+    }
+    load(){
+      return JSON.parse(localStorage.getItem('wynik'));
     }
 }
 
