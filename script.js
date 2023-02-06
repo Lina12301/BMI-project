@@ -3,13 +3,6 @@ const btn = document.querySelector('button');
 const list = document.querySelector('.result ul');
 
 
-// const date1 = ()=> {
-//     const now = new Date();
-// return{
-//     infoff: `Pomiar odnotowany dnia:${now.getDate()}.${now.getMonth()+1}.${now.getFullYear()}
-//     o godzinie: ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
-//         // console.log(text);
-// }}
 const clean = () => {
     const input_H = document.getElementById("height");
     const input_W = document.getElementById("weight");
@@ -36,13 +29,11 @@ const makeList = () => {
     for (const res of results.show()) {
         const {id, text} = res;
         const newList = document.createElement('li');
-        //const date = document.createElement('li');
         newList.innerHTML = res.text;
         newList.addEventListener('click', chooseResult);
         newList.dataset.id = res.id;
         list.appendChild(newList);
     }
-    //document.getElementById("avg").innerText = "Średnia wyników: " + results.avg().toFixed(2);
 showAvg();
 };
 const info = () => {
