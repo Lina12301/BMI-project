@@ -27,7 +27,6 @@ const showAvg=()=>{
 const makeList = () => {
     list.innerText = '';
     for (const res of results.show()) {
-        const {id, text} = res;
         const newList = document.createElement('li');
         newList.innerHTML = res.text;
         newList.addEventListener('click', chooseResult);
