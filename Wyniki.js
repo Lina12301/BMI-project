@@ -27,15 +27,12 @@ class Wyniki {
     }
 
     show() {
-        const now = new Date();
         return this.wyniki
             .map((wynik, i) => {
                 return {
-
                     id: i + 1,
                     text: `${i + 1}) Waga: ${wynik.waga} Wzrost: ${wynik.wzrost}  BMI: ${wynik.bmi.toFixed(2)}
-                    Pomiar odnotowany dnia: ${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}r.
-     o godzinie: ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+                    Pomiar odnotowany dnia: ${wynik.data}`
                 };
             });
 
@@ -71,6 +68,7 @@ class Wynik {
         this.waga = waga;
         this.wzrost = wzrost;
         this.bmi = bmi;
+        this.data = data;
 
     }
 }
